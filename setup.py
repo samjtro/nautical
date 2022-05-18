@@ -2,22 +2,16 @@ from setuptools import setup, find_packages
 from os import path
 from json import loads
 
-try:
-	from pip._internal.req import parse_requirements
-except ImportError:
-	from pip.req import parse_requirements
-
 this_directory = path.abspath(path.dirname(__file__))
+
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-with open(path.join(this_directory,"about.json"), "r") as about:
+with open(path.join(this_directory, "about.json"), "r") as about:
     jd = loads(about.read())
 
-
-with open(path.join(this_directory, "requirements.txt"), "r") as reqs:
-    requirements = reqs.read().split()
-requirements = [x for x in requirements if x]
+with open(path.join(this_directory, "requirements.txt"), "r") as req:
+    requirements = [x for x in req if x]
 
     
 setup(
